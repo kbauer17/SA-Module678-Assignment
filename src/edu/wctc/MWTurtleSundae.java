@@ -1,20 +1,19 @@
 package edu.wctc;
 
-public class MWHotFudgeSundae extends Sundae{
+public class MWTurtleSundae extends Sundae{
 
-    public MWHotFudgeSundae(){
-        name = "Midwest Hot Fudge";
+    public  MWTurtleSundae(){
+        name = "Midwest Turtle Sundae";
         dish = "medium round glass bowl";
         flavorIceCream = "vanilla";
         toppings.add("hot fudge sauce");
-        toppings.add("whipped cream");
+        toppings.add("hot caramel sauce");
         toppings.add("chopped nuts");
-        toppings.add("maraschino cherry");
     }
 
     @Override
     void prepare() {
-        System.out.println("Preparing the "+dish+ " by adding a swirl of hot fudge sauce");
+        System.out.println("Preparing the "+dish+" by adding a swirl of hot fudge sauce then adding a swirl of hot caramel sauce");
     }
 
     @Override
