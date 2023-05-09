@@ -9,6 +9,9 @@ public abstract class Sundae {
     String flavorIceCream;
     List<String> toppings = new ArrayList<String>();
 
+    void displayOrder(){
+        System.out.println("You have ordered a "+getName());
+    }
     void prepare(){
         System.out.println("Preparing the "+dish);
     }
@@ -25,7 +28,7 @@ public abstract class Sundae {
     }
 
     void finishDessert(){
-        System.out.println("Finishing with a spoon and napkin.  Enjoy!");
+        System.out.println("Finishing with a spoon and napkin.  Enjoy!\n");
     }
 
     public String getName(){

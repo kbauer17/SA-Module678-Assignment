@@ -4,7 +4,8 @@ public abstract class IceCreamStore {
 
     public Sundae orderDessert(String type){
         Sundae sundae;
-        sundae = createDesser(type);
+        sundae = createDessert(type);
+        sundae.displayOrder();
         sundae.prepare();
         sundae.addIceCream();
         sundae.addToppings();
@@ -12,6 +13,6 @@ public abstract class IceCreamStore {
         return sundae;
     }
 
-    abstract Sundae createDesser(String type);
+    abstract Sundae createDessert(String type);
 
 }

@@ -2,7 +2,7 @@ package edu.wctc;
 
 public class MWIceCreamStore extends IceCreamStore {
     @Override
-    Sundae createDesser(String type) {
+    Sundae createDessert(String type) {
         if(type.equals("MWHotFudgeSundae")){
             return new MWHotFudgeSundae();
         } else if (type.equals("MWTurtleSundae")) {
