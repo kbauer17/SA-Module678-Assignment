@@ -1,5 +1,11 @@
 package edu.wctc;
 
+/**
+ * abstract class defining the minimum requirements for each Sundae
+ * @author Kathy Bauer
+ * @version 1.0
+ */
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,26 +15,41 @@ public abstract class Sundae {
     String flavorIceCream;
     List<String> toppings = new ArrayList<String>();
 
-    void displayOrder(){
-        System.out.println("You have ordered a "+getName());
-    }
-    void prepare(){
-        System.out.println("Preparing the "+dish);
-    }
 
-    void addIceCream(){
-        System.out.println("Adding scoops of "+ flavorIceCream + "ice cream");
-    }
+    // method returning a String built from the name of the sundae,
+    // the type of ice cream used and a list of the toppings
+    // this is used in creating a menu from which the user selects a sundae
 
-    void addToppings(){
-        System.out.println("Adding toppings:");
+    String itemDescription(){
+        String str = name+":  "+flavorIceCream+", ";
         for(String topping : toppings){
-            System.out.println(" "+ topping);
+            str += topping +", ";
         }
+        return str;
     }
 
-    void finishDessert(){
-        System.out.println("Finishing with a spoon and napkin.  Enjoy!\n");
+    String displayOrder(){
+        return "You have ordered a "+getName();
+    }
+    String prepare(){
+        return "Preparing the "+dish;
+    }
+
+    String addIceCream(){
+        return "Adding scoops of "+ flavorIceCream + "ice cream";
+    }
+
+    String addToppings(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("Adding toppings:\n");
+        for(String topping : toppings){
+            sb.append("\t\t"+ topping + "\n");
+        }
+        return sb.toString();
+    }
+
+    String finishDessert(){
+        return "Finishing with a spoon and napkin.  Enjoy!\n";
     }
 
     public String getName(){

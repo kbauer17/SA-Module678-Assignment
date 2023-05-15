@@ -1,11 +1,19 @@
 package edu.wctc;
 
+/**
+ * public class extending Sundae, providing specific
+ * elements needed for a variant of Sundae
+ * @author Kathy Bauer
+ * @version 1.0
+ */
+
 public class MWBananaSplit extends Sundae{
 
     public  MWBananaSplit(){
+
         name = "Midwest Banana Split";
         dish = "oblong glass boat";
-        flavorIceCream = "vanilla";
+        flavorIceCream = "vanilla ice cream";
         toppings.add("diced pineapple");
         toppings.add("diced strawberries");
         toppings.add("whipped cream on each scoop");
@@ -15,13 +23,15 @@ public class MWBananaSplit extends Sundae{
         toppings.add("3 maraschino cherries");
     }
 
+    // method returning a string with specifics of preparing this sundae object
     @Override
-    void prepare() {
-        System.out.println("Preparing the "+dish+" by adding long slices of banana");
+    String prepare() {
+        return "Preparing the "+dish+" by adding long slices of banana";
     }
 
+    // method returning a string with specifics of scoops of frozen item added to this sundae object
     @Override
-    void addIceCream() {
-        System.out.println("Adding 3 scoops of "+flavorIceCream+ " ice cream");
+    String addIceCream() {
+        return "Adding 3 scoops of "+flavorIceCream;
     }
 }

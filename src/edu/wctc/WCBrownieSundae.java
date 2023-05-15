@@ -1,21 +1,30 @@
 package edu.wctc;
 
+/**
+ * public class extending Sundae, providing specific
+ * elements needed for a variant of Sundae
+ * @author Kathy Bauer
+ * @version 1.0
+ */
+
 public class WCBrownieSundae extends Sundae{
 
     public WCBrownieSundae(){
         name = "West Coast Brownie Sundae";
         dish = "round dessert plate";
-        flavorIceCream = "chocolate";
+        flavorIceCream = "chocolate frozen yogurt";
         toppings.add("hot fudge sauce");
     }
 
+    // method returning a string with specifics of preparing this sundae object
     @Override
-    void prepare() {
-        System.out.println("Preparing the "+dish+" by drizzling hot fudge sauce then centering the large square brownie");
+    String prepare() {
+        return "Preparing the "+dish+" by drizzling hot fudge sauce then centering the large square brownie";
     }
 
+    // method returning a string with specifics of scoops of frozen item added to this sundae object
     @Override
-    void addIceCream() {
-        System.out.println("Adding 1 large scoop of "+flavorIceCream+" ice cream");
+    String addIceCream() {
+        return "Adding 1 large scoop of "+flavorIceCream;
     }
 }

@@ -1,25 +1,60 @@
 package edu.wctc;
 
+/**
+ * Driver class for this package
+ * @author Kathy Bauer
+ * @version 1.0
+ */
+
 public class Main {
     public static void main(String[] args) {
-        IceCreamStore mwStore = new MWIceCreamStore();
-        IceCreamStore wcStore = new WCIceCreamStore();
+        IOStrategy ioStrategy;      //an instance of IOStrategy is now available to the package
 
-        Sundae sundae = mwStore.orderDessert("MWHotFudgeSundae");
+        switch (args[0].indexOf(0)){        // allow arguments to set the IO strategy
+            case 'C': ioStrategy = new ConsoleIOStrategy();break;
+            default: ioStrategy = new ConsoleIOStrategy();
+        }
 
-        sundae = mwStore.orderDessert("MWTurtleSundae");
+        UI ui = UI.getInstance(ioStrategy); // access the singleton UI
 
-        sundae = mwStore.orderDessert("MWBananaSplit");
+        // provide access to the Ice Cream Stores (this is the abstract Factory class)
+        IceCreamStore store;
 
-        sundae = mwStore.orderDessert("MWBrownieSundae");
+        //instantiate the concrete ice cream store based on user's region response
+        char region = ' ';
+        try {
+            region = ui.getStoreRegion();   // asking user for region
+            switch (region) {    // set the store to the selected region
+                case 'm':
+                case 'M':
+                    // this selection is the same as the default but kept here to allow easier
+                    // factory expansion or change in handling erroneous user input
+                    store = new MWIceCreamStore(ui);
+                    break;
+                case 's':
+                case 'S':
+                    store = new WCIceCreamStore(ui);
+                    break;
+                default:
+                    store = new MWIceCreamStore(ui);
+            }
 
-        sundae = wcStore.orderDessert("WCHotFudgeSundae");
+            // provide a menu to the user and act on their input
+            char uInput = ' ';
+            do {
+                ioStrategy.outputLine("Please choose from today's selections (x to exit):");
+                uInput = ui.getStoreMenu(store);
 
-        sundae = wcStore.orderDessert("WCTurtleSundae");
+                if(uInput != 'X')
+                    ui.buildSundae(store.createDessert(uInput));
 
-        sundae = wcStore.orderDessert("WCBananaSplit");
+            } while (uInput != 'X');
 
-        sundae = wcStore.orderDessert("WCBrownieSundae");
+            ioStrategy.outputLine("Thank you and goodbye for now!");
+        }
+        catch(Exception e){
+            ioStrategy.outputLine("Exception => "+e);
+        }
 
     }
 
