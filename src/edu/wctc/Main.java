@@ -10,9 +10,22 @@ public class Main {
     public static void main(String[] args) {
         IOStrategy ioStrategy;      //an instance of IOStrategy is now available to the package
 
-        switch (args[0].indexOf(0)){        // allow arguments to set the IO strategy
-            case 'C': ioStrategy = new ConsoleIOStrategy();break;
-            default: ioStrategy = new ConsoleIOStrategy();
+        // allow configuration arguments to set the IO strategy
+        char myArg;
+        try {
+            myArg = (args[0].charAt(0));
+            switch (myArg) {
+                case 'C':
+                    ioStrategy = new ConsoleIOStrategy();
+                    break;
+                default:
+                    ioStrategy = new ConsoleIOStrategy();
+                    break;
+            }
+        }catch (Exception e){
+            System.out.println("\nIO strategy not set by configuration, using default.\n");
+        }finally{
+            ioStrategy = new ConsoleIOStrategy();
         }
 
         UI ui = UI.getInstance(ioStrategy); // access the singleton UI
