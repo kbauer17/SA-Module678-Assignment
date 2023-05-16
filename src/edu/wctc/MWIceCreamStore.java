@@ -26,7 +26,6 @@ public class MWIceCreamStore extends IceCreamStore {
             case '4'-> {return new MWBananaSplit();}
             default -> {return null;}
         }
-
     }
 
     // method returning a string built from the items available in a specific ice cream store
